@@ -24,7 +24,7 @@ class ShadowServerParserBot(Bot):
             return
 
         if report:
-            raw_report = utils.base64_decode(report.value("raw"))
+            raw_report = utils.base64_decode(report.get("raw"))
 
             rows = csv.DictReader(StringIO(raw_report))
 

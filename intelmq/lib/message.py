@@ -221,6 +221,8 @@ class Event(Message):
                 template['feed.accuracy'] = message['feed.accuracy']
             if 'time.observation' in message:
                 template['time.observation'] = message['time.observation']
+            if 'feed.reportname' in message:
+                template['feed.reportname'] = message['feed.reportname']
         else:
             template = message
         super(Event, self).__init__(template)

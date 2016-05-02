@@ -43,12 +43,16 @@ class MailStripCollectorBot(Bot):
                                         report.add("raw", raw_report, sanitize=True)
                                         report.add("feed.name", self.parameters.feed,sanitize=True)
                                         report.add("feed.accuracy", self.parameters.accuracy, sanitize=True)
+                                        self.logger.info('all is well sir!')
                                         time_observation = DateTime().generate_datetime_now()
-                                        report.add('time.observation', time_observation,sanitize=True)
+                                        self.logger.info('still feeling great')
+                                        #report.add('time.observation', time_observation)
+                                        self.logger.info('what is the subject? ')
                                         report.add('feed.reportname', message.subject, sanitize=True)
+                                        self.logger.info('rocking in a free world')
 
                                         self.send_message(report)
-
+                                self.logger.info('just some administration left')
                                 mailbox.mark_seen(uid)
                                 self.logger.info("Email report read")
                         else:
@@ -72,6 +76,7 @@ class MailStripCollectorBot(Bot):
                                         report.add("raw", raw_report, sanitize=True)
                                         report.add("feed.name", self.parameters.feed, sanitize=True)
                                         report.add("feed.accuracy", self.parameters.accuracy, sanitize=True)
+                                        self.logger.info("all is well sir")
                                         time_observation = DateTime().generate_datetime_now()
                                         report.add('time.observation', time_observation, sanitize=True)
                                         report.add('feed.reportname', message.subject, sanitize=True)
