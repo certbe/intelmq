@@ -71,7 +71,7 @@ class ShadowServerParserBot(Bot):
 
                 event.add('classification.type', u'vulnerable service')
 
-                self.addextraparams(event, event.value('feed.name'))
+                self.addextraparams(event, event.get('feed.name'))
 
                 self.send_message(event)
         self.acknowledge_message()
@@ -79,48 +79,65 @@ class ShadowServerParserBot(Bot):
     def addextraparams(self, event, feedname):
         if feedname == 'shadowserver-dnsopenresolver':
                 event.add('protocol.application',u'dns')
+                event.add('classification.identifier',u'dns')
 
         elif feedname == 'shadowserver-drone' or feedname == 'shadowserver-mssinkhole':
                 event.update('classification.type',u'botnet drone')
+                event.add('classification.identifier',u'botnet')
 
         elif feedname == 'shadowserver-ipmi':
                 event.add('protocol.application',u'ipmi')
+                event.add('classification.identifier',u'ipmi')
 
         elif feedname == 'shadowserver-mongodb':
                 event.add('protocol.application',u'mongodb')
+                event.add('classification.identifier',u'mongodb')
 
         elif feedname == 'shadowserver-nat-pmp':
                 event.add('protocol.application',u'nat-pmp')
+                event.add('classification.identifier',u'nat-pmp')
 
         elif feedname == 'shadowserver-netbios':
                 event.add('protocol.application',u'netbios')
+                event.add('classification.identifier',u'netbios')
 
         elif 'ntp' in feedname:
                 event.add('protocol.application',u'ntp')
+                event.add('classification.identifier',u'ntp')
 
         elif feedname == 'shadowserver-sslpoodle':
-                event.add('protocol.application',u'netbios')
+                event.add('protocol.application',u'ssl')
+                event.add('classification.identifier',u'ssl')
 
         elif feedname == 'shadowserver-qotd':
                 event.add('protocol.application',u'qotd')
+                event.add('classification.identifier',u'qotd')
 
         elif feedname == 'shadowserver-redis':
                 event.add('protocol.application',u'redis')
+                event.add('classification.identifier',u'redis')
         elif feedname == 'shadowserver-httpdrone':
                 event.add('protocol.application',u'http')
                 event.update('classification.type',u'botnet drone')
+                event.add('classification.identifier',u'botnet')
 
         elif feedname == 'shadowserver-snmp':
                 event.add('protocol.application',u'snmp')
+                event.add('classification.identifier',u'snmp')
 
         elif feedname == 'shadowserver-ssdp':
                 event.add('protocol.application',u'ssdp')
+                event.add('classification.identifier',u'ssdp')
 
         elif feedname == 'shadowserver-portmapper':
                 event.add('protocol.application',u'portmapper')
+                event.add('classification.identifier',u'portmapper')
 
         elif feedname == 'shadowserver-elasticsearch':
                 event.add('protocol.application',u'elasticsearch')
+                event.add('classification.identifier',u'elasticsearch')
+
+
 
 if __name__ == "__main__":
     bot = ShadowServerParserBot(sys.argv[1])
